@@ -15,8 +15,6 @@ async function mi_peticion(){
     imgPokemon.src = urlImagenFrontal
     document.body.appendChild(imgPokemon)
 }
-mi_peticion()
-
 
 function generarNumeroAleatorio(){
     let numeroAleatorio = Math.floor(Math.random() * 200) + 1;
