@@ -53,3 +53,9 @@ button{
     position: absolute;
     top: 0;
 }
+
+#imgPokemon{
+    width: 200px;
+    height: 200px;
+    image-rendering: pixelated;
+}
