@@ -20,12 +20,12 @@ async function mi_peticion(){
     //Accedo a la informacion de nombre de la API para que me cambie el nombre de pokemon en el botón
     mostrarNombrePokemon(pkmm.name);
 }
+mi_peticion()
 
 function mostrarNombrePokemon(nombrePokemon) {
     //Modifico la información del botón del HTML
     const btnObtenerPokemon = document.getElementById("btnObtenerPokemon");
     btnObtenerPokemon.innerHTML = `${nombrePokemon}`;
-    console.log(nombrePokemon)
 }
 
 function generarNumeroAleatorio(){
