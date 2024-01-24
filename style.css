@@ -17,7 +17,7 @@ body{
 }
 
 .section1{
-    background-color: rgba(100, 93, 93, 0.267);
+    background-color: rgba(99, 96, 96, 0.63);
 }
 
 button{
@@ -35,7 +35,7 @@ button{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50vw;
+    width: 50vh;
     min-height: 50vh;
 
 }
