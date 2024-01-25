@@ -20,7 +20,7 @@ body{
     background-color: rgba(99, 96, 96, 0.63);
 }
 
-button{
+input{
     padding: 1rem 0.5rem;
     color: black;
     border: none;
