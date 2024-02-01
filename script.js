@@ -19,36 +19,68 @@ async function mi_peticion(){
     const pkmn1 = await getPkmn(numeroAleatorio1);
     const pkmn2 = await getPkmn(numeroAleatorio2);
     const pkmn3 = await getPkmn(numeroAleatorio3);
-
+    
     const {front_default} = pkmn.sprites
     const urlImagenFrontal = front_default
     
     const imgPokemon = document.getElementById("imgPokemon");
     imgPokemon.src = urlImagenFrontal;
-
+    imgPokemon.className = "hidden"
+    
     //Accedo a la informacion de nombre de la API para que me cambie el nombre de pokemon en el botón
-    mostrarNombrePokemon(pkmn.name, pkmn1.name, pkmn2.name, pkmn3.name);
+    //updateOpciones(pkmn.name);
+
+    const pregunta = {
+        win: pkmn.name,
+        winImg: pkmn.imgPokemon,
+        lose1: pkmn1.name,
+        lose2: pkmn2.name,
+        lose3: pkmn3.name,
+    }
+    updateOpciones(pregunta);
+    
+    const form = document.querySelector("#form-jugador")
+    
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+    newForm.addEventListener("click", (e) => {
+        e.preventDefault();
+        const imgPokemon = document.getElementById("imgPokemon");
+        imgPokemon.src = pregunta.winImg;
+        imgPokemon.className = "show"
+        const opcion = e.target.value;
+        console.log(opcion);
+    })
+    
 }
 mi_peticion()
 
-function mostrarNombrePokemon(nombrePokemon, nombrePokemon1, nombrePokemon2, nombrePokemon3) {
+
+function updateOpciones(opciones) {
     //Modifico la información del botón del HTML
     const btnObtenerPokemon = document.getElementById("btnObtenerPokemon");
     const btnObtenerPokemon1 = document.getElementById("btnObtenerPokemon1");
     const btnObtenerPokemon2 = document.getElementById("btnObtenerPokemon2");
     const btnObtenerPokemon3 = document.getElementById("btnObtenerPokemon3");
     
-    btnObtenerPokemon.value = `${nombrePokemon}`;
-    btnObtenerPokemon1.value = `${nombrePokemon1}`;
-    btnObtenerPokemon2.value = `${nombrePokemon2}`;
-    btnObtenerPokemon3.value = `${nombrePokemon3}`;
+    const buttons = [btnObtenerPokemon, btnObtenerPokemon1, 
+    btnObtenerPokemon2, btnObtenerPokemon3];
+    buttons.sort(() => Math.random() - 0.5);
+
+    btnObtenerPokemon.value = opciones.win;
+    btnObtenerPokemon1.value = opciones.lose1;
+    btnObtenerPokemon2.value = opciones.lose2;
+    btnObtenerPokemon3.value = opciones.lose3;
 }
+
+
 
 function generarNumeroAleatorio(){
     return Math.floor(Math.random() * 200) + 1;
 }
 
 const btnObtenerPokemon = document.getElementById("btnObtenerPokemon");
+
 //Agregar un event listener para ejecutar mi_peticion al hacer click en el botón
-btnObtenerPokemon.addEventListener("click", mi_peticion);
+//btnObtenerPokemon.addEventListener("click", mi_peticion);
 
