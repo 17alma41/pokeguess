@@ -16,8 +16,14 @@ body{
     min-height: 100vh;
 }
 
+h2{
+    margin-bottom: 1em;
+}
+
 .section1{
-    background-color: rgba(99, 96, 96, 0.63);
+    background-color: rgba(35, 130, 238, 0.438);
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px;
 }
 
 input{
@@ -50,6 +56,7 @@ input{
     display: flex;
     flex-direction: column;
     padding: 0px;
+    margin-top: 11em;
     position: absolute;
     top: 0;
 }
@@ -58,4 +65,13 @@ input{
     width: 200px;
     height: 200px;
     image-rendering: pixelated;
+}
+
+.hidden{
+    filter: brightness(0);
+}
+
+.show{
+    filter: brightness(1);
+    transition: 1s;
 }
